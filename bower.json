@@ -8,6 +8,7 @@
   "license": "MIT",
   "ignore": [
     "**/.*",
+    "!.jshintrc",
     "node_modules",
     "bower_components",
     "test",
