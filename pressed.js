@@ -18,6 +18,8 @@ exports = module.exports = function(el, options) {
   var removeReleased;
 
   el.addEventListener(pointer.down, function(e) {
+    if (scrolling) { return; }
+
     var start = e.timeStamp;
     var target = e.target;
 
@@ -70,6 +72,17 @@ function classListUp(el, method, cls) {
     el = el.parentNode;
   }
 }
+
+var scrolling = false;
+var scrollTimeout;
+
+addEventListener('scroll', function() {
+  scrolling = true;
+  clearTimeout(scrollTimeout);
+  scrollTimeout = setTimeout(function() {
+    scrolling = false;
+  }, 100);
+});
 
 });})(typeof define=='function'&&define.amd?define
 :(function(n,w){'use strict';return typeof module=='object'?function(c){
